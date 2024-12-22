@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is visible.
+  </div>
+
+  <script>
+    //Robust solution:
+    const myDiv = document.getElementById('myDiv');
+    if (myDiv) {
+      myDiv.textContent = 'This text will always be visible.';
+      setTimeout(function() {
+          myDiv.innerHTML += "<p>This is appended text and will be correctly appended.</p>";
+      }, 1000);
+    } else {
+      console.error("Element with id 'myDiv' not found.");
+    }
+  </script>
+</body>
+</html>
